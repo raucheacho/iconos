@@ -42,11 +42,11 @@ changelog:
 
 brews:
   - repository:
-      owner: YOUR_GITHUB_USERNAME
+      owner: raucheacho
       name: homebrew-tap
       token: "{{ .Env.HOMEBREW_TAP_TOKEN }}"
     directory: Formula
-    homepage: "https://github.com/YOUR_GITHUB_USERNAME/iconos"
+    homepage: "https://github.com/raucheacho/iconos"
     description: "CLI tool to generate icons and favicons from a source image"
     license: "MIT"
     install: |
@@ -56,16 +56,16 @@ brews:
 
 scoops:
   - repository:
-      owner: YOUR_GITHUB_USERNAME
+      owner: raucheacho
       name: scoop-bucket
       token: "{{ .Env.SCOOP_BUCKET_TOKEN }}"
-    homepage: "https://github.com/YOUR_GITHUB_USERNAME/iconos"
+    homepage: "https://github.com/raucheacho/iconos"
     description: "CLI tool to generate icons and favicons from a source image"
     license: "MIT"
 
 release:
   github:
-    owner: YOUR_GITHUB_USERNAME
+    owner: raucheacho
     name: iconos
   draft: false
   prerelease: auto

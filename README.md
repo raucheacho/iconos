@@ -7,26 +7,26 @@ Générateur d'icônes CLI pour extensions, web, PWA et mobile.
 ### Homebrew (macOS/Linux)
 
 ```bash
-brew install YOUR_GITHUB_USERNAME/tap/iconos
+brew install raucheacho/tap/iconos
 ```
 
 ### Scoop (Windows)
 
 ```powershell
-scoop bucket add YOUR_GITHUB_USERNAME https://github.com/YOUR_GITHUB_USERNAME/scoop-bucket
+scoop bucket add raucheacho https://github.com/raucheacho/scoop-bucket
 scoop install iconos
 ```
 
 ### Go install
 
 ```bash
-go install github.com/YOUR_GITHUB_USERNAME/iconos@latest
+go install github.com/raucheacho/iconos@latest
 ```
 
 ### Build from source
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/iconos.git
+git clone https://github.com/raucheacho/iconos.git
 cd iconos
 go build -o iconos .
 ```
