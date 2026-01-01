@@ -1,0 +1,33 @@
+# Binary
+iconos
+iconos.exe
+
+# Output
+icons/
+dist/
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+go.work.sum
+
+# IDE
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test files
+test-input.png
+*.ico
+favicon*.png
