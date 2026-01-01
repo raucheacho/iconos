@@ -53,6 +53,8 @@ brews:
       bin.install "iconos"
     test: |
       system "#{bin}/iconos", "--help"
+    # Télécharge le binaire pré-compilé au lieu de compiler depuis les sources
+    download_strategy: CurlDownloadStrategy
 
 scoops:
   - repository:

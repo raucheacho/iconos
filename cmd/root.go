@@ -39,9 +39,8 @@ func SetVersion(v, c, d string) {
 }
 
 var rootCmd = &cobra.Command{
-	Use:     "iconos [image]",
-	Short:   "Générateur d'icônes pour extensions, web, PWA et mobile",
-	Version: version,
+	Use:   "iconos [image]",
+	Short: "Générateur d'icônes pour extensions, web, PWA et mobile",
 	Long: `iconos génère automatiquement des icônes redimensionnées et des favicons
 à partir d'une image source (PNG ou SVG).
 
@@ -57,6 +56,7 @@ Exemples:
 }
 
 func Execute() {
+	rootCmd.Version = version
 	if err := rootCmd.Execute(); err != nil {
 		os.Exit(1)
 	}
