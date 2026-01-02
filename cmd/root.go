@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"iconos/internal/icon"
+	mcpserver "iconos/internal/mcp"
 	"iconos/internal/presets"
 	"iconos/internal/utils"
 
@@ -62,7 +63,40 @@ func Execute() {
 	}
 }
 
+var printConfig bool
+
+var serveCmd = &cobra.Command{
+	Use:   "serve",
+	Short: "Démarre le serveur MCP pour intégration LLM",
+	Long: `Démarre iconos en mode serveur MCP (Model Context Protocol).
+Permet aux LLM d'utiliser les outils de génération d'icônes via stdio.
+
+Options:
+  --print-config    Affiche la configuration MCP au lieu de démarrer le serveur`,
+	RunE: func(cmd *cobra.Command, args []string) error {
+		if printConfig {
+			exePath, err := os.Executable()
+			if err != nil {
+				return fmt.Errorf("impossible de déterminer le chemin: %w", err)
+			}
+			config := fmt.Sprintf(`{
+  "mcpServers": {
+    "iconos": {
+      "command": "%s",
+      "args": ["serve"]
+    }
+  }
+}`, exePath)
+			fmt.Println(config)
+			return nil
+		}
+		return mcpserver.Serve(version)
+	},
+}
+
 func init() {
+	rootCmd.AddCommand(serveCmd)
+	serveCmd.Flags().BoolVar(&printConfig, "print-config", false, "Affiche la configuration MCP prête à copier")
 	rootCmd.Flags().StringVarP(&sizes, "sizes", "s", "", "Tailles des icônes (ex: 16,32,48,128)")
 	rootCmd.Flags().StringVarP(&outDir, "out", "o", "icons", "Répertoire de sortie")
 	rootCmd.Flags().StringVarP(&prefix, "prefix", "p", "icon", "Préfixe des fichiers")

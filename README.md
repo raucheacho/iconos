@@ -1,6 +1,6 @@
 # iconos 🎨
 
-Générateur d'icônes CLI pour extensions, web, PWA et mobile.
+Générateur d'icônes CLI et serveur MCP pour extensions, web, PWA et mobile.
 
 ## Installation
 
@@ -125,6 +125,51 @@ brew install resvg
 # Conversion
 resvg input.svg input.png
 iconos input.png
+```
+
+## Serveur MCP (Model Context Protocol)
+
+iconos peut fonctionner comme serveur MCP pour permettre aux LLM (Claude, Kiro, etc.) de générer des icônes.
+
+### Configuration
+
+Obtenez la configuration prête à copier :
+
+```bash
+iconos serve --print-config
+```
+
+Résultat :
+
+```json
+{
+  "mcpServers": {
+    "iconos": {
+      "command": "/chemin/vers/iconos",
+      "args": ["serve"]
+    }
+  }
+}
+```
+
+Ajoutez cette configuration dans votre client MCP (Kiro, Claude Desktop, etc.).
+
+### Tools exposés
+
+| Tool                | Description                                     |
+| ------------------- | ----------------------------------------------- |
+| `generate_icons`    | Génère des icônes redimensionnées               |
+| `generate_favicons` | Génère des favicons PNG + ICO multi-résolutions |
+| `list_presets`      | Liste les presets de tailles disponibles        |
+
+### Exemple d'utilisation par un LLM
+
+```
+"Génère des icônes PWA pour logo.png"
+→ Appelle generate_icons avec preset: "pwa"
+
+"Crée les favicons pour mon site"
+→ Appelle generate_favicons avec html: true
 ```
 
 ## Licence
